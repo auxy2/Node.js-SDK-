@@ -2,11 +2,18 @@
   "name": "sdk_demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.m.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm rf -dist && microbundle --tsconfig tsconfig.json --no-sourcemap"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "microbundle": "^0.15.1"
+  }
 }
