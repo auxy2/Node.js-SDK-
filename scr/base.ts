@@ -4,7 +4,7 @@ type Config = {
 }
 
 export abstract class Base  {
-    private apikey: string,
+    private apikey: string
     private baseUrl: string
     constructor(config: Config){
         this.apikey = config.apikey,
