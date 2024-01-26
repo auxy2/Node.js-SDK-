@@ -10,7 +10,27 @@ export abstract class Base  {
         this.apikey = config.apikey,
         this.baseUrl = config.baseUrl || "https://jsonplaceholer.typicode.com"
     }
-protected invoke<T>(endpoint: string, options: RequestInt): Promise<T>{
-    const url = `${this.baseUrl}${endpoint}`
+protected invoke<T>(endpoint: string, options?: RequestInit): Promise<T> {
+    const url = `${this.baseUrl}${endpoint}`;
+
+    const headers = {
+        "Content-Type": "Application/json",
+        "apikey" :this.apikey
+    }
+
+    const config = {
+        ...options,
+        headers
+    }
+
+    return fetch(url, config).then((response) => {
+        if(response.ok){
+            return response.json()
+        }else {
+            throw new Error(response.statusText);
+        }
+    })
 }
+
+
 }
